@@ -7,7 +7,7 @@ Application JavaFX pour consulter les données de DOMAINE.nc, développée en pr
 
 # 🧑‍🤝‍🧑 Team
 
-- [Kevin](https://dev.to/kpetit)
-- [David](https://dev.to/davnox900)
-- [Irwan](https://dev.to/isoernc)
-- [adriens](https://dev.to/adriens)
+- [👦 Kevin](https://dev.to/kpetit)
+- [👦 David](https://dev.to/davnox900)
+- [👦 Irwan](https://dev.to/isoernc)
+- [👨 adriens](https://dev.to/adriens)
