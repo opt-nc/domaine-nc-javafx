@@ -5,15 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.unc</groupId>
-    <artifactId>domaine-nc</artifactId>
+    <artifactId>domainenc</artifactId>
     <version>1.0.0</version>
     <name>domaine-nc</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <jfx.version>11.0.2</jfx.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <jfx.version>17.0.7-ea+1</jfx.version>
         <junit.version>5.9.1</junit.version>
     </properties>
 
@@ -57,7 +57,7 @@
                     <execution>
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.demo/com.example.demo.HelloApplication</mainClass>
+                            <mainClass>com.unc.domainenc/com.unc.domainenc.HelloApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
