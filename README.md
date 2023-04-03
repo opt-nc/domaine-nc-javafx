@@ -21,3 +21,21 @@ Application JavaFX pour consulter les données de DOMAINE.nc, développée en pr
 - :octocat: [lschaeffer313/domaine-nc-mobile`](https://github.com/lschaeffer313/domaine-nc-mobile)
 - 📝 [📢 Unboxing Domaine NC mobile `v1.3.0`](https://dev.to/optnc/unboxing-domaine-nc-mobile-v130-59pi)
 - 📝 [📢 DOMAINE.NC mobile `v1.0.7` sur le PlayStore 🛍️ ](https://dev.to/adriens/domainenc-mobile-v107-sur-le-playstore-5741)
+
+# Requirement
+
+Requière un JDK-17.x.y .
+
+# Installation et Execution
+
+Build le projet sous maven :
+
+>mvn clean package
+
+![mvn_clean_package screenshot](image/mvn_clean_package.PNG)
+
+Execution :
+
+>mvn clean javafx:run
+
+![mvn_clean_javafx:run screenshot](image/mvn_clean_javafx_run.PNG)
