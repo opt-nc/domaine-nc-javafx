@@ -9,6 +9,14 @@ Application JavaFX pour consulter les données de DOMAINE.nc, développée en pr
 
 > Appli **[JavaFX](https://openjfx.io/) disruptive Desktop** pour consuleter les noms de [DOMAINE.nc](https://www.domaine.nc/) via son [API publique](https://rapidapi.com/opt-nc-opt-nc-default/api/domaine-nc/details).
 
+# 🕹️ Utiliser
+
+Disposer de `JDK 17+` puis :
+
+```shell
+mvn javafx:run
+```
+
 # 🧑‍🤝‍🧑 Team
 
 - [👦 Kevin](https://dev.to/kpetit)
