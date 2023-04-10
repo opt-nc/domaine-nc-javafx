@@ -17,6 +17,8 @@ Disposer de `JDK 17+` puis :
 mvn javafx:run
 ```
 
+![mvn_clean_javafx:run screenshot](image/mvn_clean_javafx_run.PNG)
+
 # 🧑‍🤝‍🧑 Team
 
 - [👦 Kevin](https://dev.to/kpetit)
@@ -30,20 +32,12 @@ mvn javafx:run
 - 📝 [📢 Unboxing Domaine NC mobile `v1.3.0`](https://dev.to/optnc/unboxing-domaine-nc-mobile-v130-59pi)
 - 📝 [📢 DOMAINE.NC mobile `v1.0.7` sur le PlayStore 🛍️ ](https://dev.to/adriens/domainenc-mobile-v107-sur-le-playstore-5741)
 
-# Requirement
-
-Requière un JDK-17.x.y .
-
-# Installation et Execution
+# Installation
 
 Build le projet sous maven :
 
->mvn clean package
+```shell
+mvn clean package
+```
 
 ![mvn_clean_package screenshot](image/mvn_clean_package.PNG)
-
-Execution :
-
->mvn clean javafx:run
-
-![mvn_clean_javafx:run screenshot](image/mvn_clean_javafx_run.PNG)
