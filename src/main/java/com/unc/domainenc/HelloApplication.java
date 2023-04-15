@@ -14,9 +14,9 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("interface_domaine_nc.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        scene.getStylesheets().add(HelloApplication.class.getResource("css/main.css").toExternalForm());
+        scene.getStylesheets().add(HelloApplication.class.getResource("css/style_domaine_nc.css").toExternalForm());
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
