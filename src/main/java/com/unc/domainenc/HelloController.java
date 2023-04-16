@@ -5,50 +5,50 @@ import com.unc.domainenc.api.Request;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class HelloController {
-    
-    @FXML
-    private VBox vBox;
 
     @FXML
-    private TextField searchBar=new TextField("opt");
-    
+    private VBox vBoxDomaines;
 
-    private List<DomaineEntity> listDomaine;
+    @FXML
+    private TextField searchBar;
+
+    private List<DomaineEntity> listDomaines;
 
     public void initialize() {
         Request request = new Request();
-        listDomaine = request.getDomaine();
-    }
-
-    private void setSearch(TextField text){
-        searchBar.setText(text.getText());
+        listDomaines = request.getDomaine();
     }
 
     @FXML
-    protected void click() {
-        vBox.getChildren().clear();
-        setSearch(searchBar);
-        List<DomaineEntity> res=searchList(searchBar.getText());
-        for (DomaineEntity domaine : res) {
+    protected void onClick() {
+        vBoxDomaines.getChildren().clear();
+        List<DomaineEntity> sortList = searchList(searchBar.getText());
+        for (DomaineEntity domaine : sortList) {
             TextField textField = new TextField(String.format("Name: %s , Extensions: %s", domaine.getName(), domaine.getExtension()));
             textField.setEditable(false);
-            vBox.getChildren().add(textField);
+            vBoxDomaines.getChildren().add(textField);
         }
     }
 
     protected List<DomaineEntity> searchList(String searchWords) {
-
-        List<DomaineEntity> res=new ArrayList<>();
-        for(DomaineEntity domaine : listDomaine){
-            if(domaine.getName().contains(searchWords)) {
+        List<DomaineEntity> res = new ArrayList<>();
+        for (DomaineEntity domaine : listDomaines) {
+            boolean check = true;
+            for (int i = 0; i < searchWords.length(); i++) {
+                if (domaine.getName().charAt(i) != searchWords.charAt(i)) {
+                    check = false;
+                    break;
+                }
+            }
+            if (check) {
                 res.add(domaine);
             }
         }
         return res;
-
     }
 }

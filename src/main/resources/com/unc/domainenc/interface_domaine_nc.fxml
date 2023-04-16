@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="420.0" minWidth="300.0" prefHeight="420.0" prefWidth="600.0" styleClass="fond" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.unc.domainenc.HelloController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="420.0"
+            minWidth="300.0"
+            prefHeight="420.0" prefWidth="600.0" styleClass="fond"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.unc.domainenc.HelloController">
     <children>
-        <HBox alignment="CENTER" layoutY="4.0" prefHeight="138.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0">
+        <HBox alignment="CENTER" layoutY="4.0" prefHeight="138.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0">
             <children>
-                <TextField fx:id="searchBar" promptText="exemple : opt" />
-                <Button mnemonicParsing="false" onAction="#click" text="recherche" />
+                <TextField fx:id="searchBar" promptText="exemple : opt"/>
+                <Button mnemonicParsing="false" onAction="#onClick" text="recherche"/>
             </children>
         </HBox>
-        <HBox alignment="CENTER" layoutY="140.0" prefHeight="280.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
+        <HBox alignment="CENTER" layoutY="140.0" prefHeight="280.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
             <children>
                 <ScrollPane fitToHeight="true" prefHeight="280.0" prefWidth="356.0">
                     <content>
-                        <VBox fx:id="vBox" prefHeight="278.0" prefWidth="354.0" styleClass="fond" />
+                        <VBox fx:id="vBoxDomaines" prefHeight="278.0" prefWidth="354.0" styleClass="fond"/>
                     </content>
                 </ScrollPane>
             </children>
