@@ -27,12 +27,15 @@ public class HelloController {
     @FXML
     protected void onClick() {
         vBoxDomaines.getChildren().clear();
-        List<DomaineEntity> sortList = searchList(searchBar.getText());
-        for (DomaineEntity domaine : sortList) {
-            TextField textField = new TextField(String.format("Name: %s , Extensions: %s", domaine.getName(), domaine.getExtension()));
-            textField.setEditable(false);
-            vBoxDomaines.getChildren().add(textField);
-        }
+        Thread taskThread = new Thread(() -> {
+            List<DomaineEntity> sortList = searchList(searchBar.getText());
+            for (DomaineEntity domaine : sortList) {
+                TextField textField = new TextField(String.format("Name: %s , Extensions: %s", domaine.getName(), domaine.getExtension()));
+                textField.setEditable(false);
+                vBoxDomaines.getChildren().add(textField);
+            }
+        });
+        taskThread.start();
     }
 
     protected List<DomaineEntity> searchList(String searchWords) {
