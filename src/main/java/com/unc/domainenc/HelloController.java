@@ -2,7 +2,9 @@ package com.unc.domainenc;
 
 import com.unc.domainenc.api.DomaineEntity;
 import com.unc.domainenc.api.Request;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
@@ -17,6 +19,9 @@ public class HelloController {
     @FXML
     private TextField searchBar;
 
+    @FXML
+    private Button searchButton;
+
     private List<DomaineEntity> listDomaines;
 
     public void initialize() {
@@ -26,16 +31,26 @@ public class HelloController {
 
     @FXML
     protected void onClick() {
+        searchButton.setDisable(true);
         vBoxDomaines.getChildren().clear();
-        Thread taskThread = new Thread(() -> {
+        Thread searchThread = new Thread(() -> {
             List<DomaineEntity> sortList = searchList(searchBar.getText());
             for (DomaineEntity domaine : sortList) {
-                TextField textField = new TextField(String.format("Name: %s , Extensions: %s", domaine.getName(), domaine.getExtension()));
-                textField.setEditable(false);
-                vBoxDomaines.getChildren().add(textField);
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                Platform.runLater(() -> {
+                    TextField textField = new TextField(String.format("Name: %s , Extensions: %s", domaine.getName(), domaine.getExtension()));
+                    textField.setEditable(false);
+                    vBoxDomaines.getChildren().add(textField);
+                });
             }
+            searchButton.setDisable(false);
         });
-        taskThread.start();
+        searchThread.setDaemon(true);
+        searchThread.start();
     }
 
     protected List<DomaineEntity> searchList(String searchWords) {

@@ -13,7 +13,7 @@
               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0">
             <children>
                 <TextField fx:id="searchBar" promptText="exemple : opt"/>
-                <Button mnemonicParsing="false" onAction="#onClick" text="recherche"/>
+                <Button fx:id="searchButton" mnemonicParsing="false" onAction="#onClick" text="Recherche"/>
             </children>
         </HBox>
         <HBox alignment="CENTER" layoutY="140.0" prefHeight="280.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0"
