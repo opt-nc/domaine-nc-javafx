@@ -9,34 +9,33 @@ Application JavaFX pour consulter les données de DOMAINE.nc, développée en pr
 
 > Appli **[JavaFX](https://openjfx.io/) disruptive Desktop** pour consuleter les noms de [DOMAINE.nc](https://www.domaine.nc/) via son [API publique](https://rapidapi.com/opt-nc-opt-nc-default/api/domaine-nc/details).
 
-# 📄 Prérequis
+# 🛑 Prérequis
 
-1. Disposer de `JDK 17+`.
-2. Créez un fichier .env à la racine du projet avec votre clé d'API.
+- ✅ Disposer de `JDK 17+`
+- ✅ Créer un fichier `.env` à la racine du projet avec [votre clé d'API](https://docs.rapidapi.com/docs/keys)
 
-```shell
+
+```properties
 X-RAPIDAPI-KEY=Votre_clef_d'API
+
 ```
+**⚠️ NB : Inutile d'aller plus loin tant que l'ensemble des prérequis ne sont pas satisfaits.⚠️**
+
 
 # 🕹️ Utiliser
 
-Exécutez:
-
 ```shell
+gh repo clone adriens/domaine-nc-javafx
+cd domaine-nc-javafx
+ls -la .env
 mvn javafx:run
 ```
 
-![mvn_clean_javafx:run screenshot](image/mvn_clean_javafx_run.PNG)
-
-# 💿 Installation
-
-Build le projet sous maven :
+# 💿 Packager
 
 ```shell
 mvn clean package
 ```
-
-![mvn_clean_package screenshot](image/mvn_clean_package.PNG)
 
 # 🧑‍🤝‍🧑 Team
 
