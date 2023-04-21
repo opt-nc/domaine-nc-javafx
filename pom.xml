@@ -75,7 +75,7 @@
                     <execution>
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.unc.domainenc/com.unc.domainenc.HelloApplication</mainClass>
+                            <mainClass>com.unc.domainenc/com.unc.domainenc.DomaineNcApp</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

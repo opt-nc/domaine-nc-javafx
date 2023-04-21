@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HelloController {
+public class DomaineNcController {
 
     @FXML
     private VBox vBoxDomaines;

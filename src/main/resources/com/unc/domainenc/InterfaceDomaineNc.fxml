@@ -7,7 +7,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="420.0"
             minWidth="300.0"
             prefHeight="420.0" prefWidth="600.0" styleClass="fond"
-            xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.unc.domainenc.HelloController">
+            xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.unc.domainenc.DomaineNcController">
     <children>
         <HBox alignment="CENTER" layoutY="4.0" prefHeight="138.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0"
               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0">
