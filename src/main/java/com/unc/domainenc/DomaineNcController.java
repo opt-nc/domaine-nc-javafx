@@ -1,5 +1,6 @@
 package com.unc.domainenc;
 
+
 import com.unc.domainenc.api.DomaineEntity;
 import com.unc.domainenc.api.Request;
 import javafx.application.Platform;
@@ -7,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,11 @@ public class DomaineNcController {
     public void initialize() {
         Request request = new Request();
         listDomaines = request.getDomaine();
+        searchBar.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                onClick();
+            }
+        });
     }
 
     @FXML
