@@ -15,7 +15,7 @@ import java.util.List;
 public class Request {
 
     private static final String apiURL = "https://domaine-nc.p.rapidapi.com/domaines";
-    private static final String ApiHOST = "domaine-nc.p.rapidapi.com";
+    private static final String apiHOST = "domaine-nc.p.rapidapi.com";
 
     private final String apiKEY;
     private final RestTemplate restTemplate;
@@ -30,25 +30,36 @@ public class Request {
 
     public static void main(String[] args) {
         Request request = new Request();
-        List<DomaineEntity> list = request.getDomaine();
-        for (DomaineEntity domaine : list) {
-            System.out.println(domaine.getName() + domaine.getExtension());
-        }
+        List<DomaineEntity> domaineList = request.getDomaine();
+        DomaineInfoEntity domaineInfo = request.getDomaineInfo("1012");
     }
 
     public List<DomaineEntity> getDomaine() {
-        List<DomaineEntity> domaineList;
         HttpHeaders headers = new HttpHeaders();
-        headers.set("X-RapidAPI-Host", ApiHOST);
+        headers.set("X-RapidAPI-Host", apiHOST);
         headers.set("X-RapidAPI-Key", apiKEY);
         ResponseEntity<String> response = restTemplate.exchange(apiURL, HttpMethod.GET, new HttpEntity<>(headers), String.class);
         try {
-            domaineList = mapper.readValue(response.getBody(), new TypeReference<List<DomaineEntity>>() {
+            List<DomaineEntity> domaineList = mapper.readValue(response.getBody(), new TypeReference<List<DomaineEntity>>() {
             });
+            return domaineList;
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
-        return domaineList;
+
+    }
+
+    public DomaineInfoEntity getDomaineInfo(String domaineName) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("X-RapidAPI-Host", apiHOST);
+        headers.set("X-RapidAPI-Key", apiKEY);
+        ResponseEntity<String> response = restTemplate.exchange(String.format("%s/%s/NC", apiURL, domaineName), HttpMethod.GET, new HttpEntity<>(headers), String.class);
+        try {
+            DomaineInfoEntity domaineInfo = mapper.readValue(response.getBody(), DomaineInfoEntity.class);
+            return domaineInfo;
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 
