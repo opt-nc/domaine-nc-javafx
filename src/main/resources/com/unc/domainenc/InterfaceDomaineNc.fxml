@@ -8,23 +8,15 @@
             minWidth="300.0"
             prefHeight="420.0" prefWidth="600.0" styleClass="fond"
             xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.unc.domainenc.DomaineNcController">
-    <children>
-        <HBox alignment="CENTER" layoutY="4.0" prefHeight="138.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0"
-              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0">
-            <children>
-                <TextField fx:id="searchBar" promptText="exemple : opt"/>
-                <Button fx:id="searchButton" mnemonicParsing="false" onAction="#onClick" text="Recherche"/>
-            </children>
-        </HBox>
-        <HBox alignment="CENTER" layoutY="140.0" prefHeight="280.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0"
-              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
-            <children>
-                <ScrollPane fitToHeight="true" prefHeight="280.0" prefWidth="356.0">
-                    <content>
-                        <VBox fx:id="vBoxDomaines" prefHeight="278.0" prefWidth="354.0" styleClass="fond"/>
-                    </content>
-                </ScrollPane>
-            </children>
-        </HBox>
-    </children>
+    <HBox alignment="CENTER" layoutY="4.0" prefHeight="138.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0"
+          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0">
+        <TextField fx:id="searchBar" promptText="exemple : opt"/>
+        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#onClick" text="Recherche"/>
+    </HBox>
+    <HBox alignment="CENTER" layoutY="140.0" prefHeight="280.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
+        <ScrollPane fitToHeight="true" prefHeight="280.0" prefWidth="356.0">
+            <VBox fx:id="vBoxDomaines" prefHeight="278.0" prefWidth="354.0" styleClass="fond"/>
+        </ScrollPane>
+    </HBox>
 </AnchorPane>
