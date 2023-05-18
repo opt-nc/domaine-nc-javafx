@@ -74,6 +74,7 @@ public class DomaineNcController {
         try {
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(DomaineNcApp.class.getResource("InterfaceInfoDomaineNc.fxml"));
+            fxmlLoader.setController(new DomaineNcInfoController(listContenu[1]));
             Scene scene = new Scene(fxmlLoader.load(), 420, 440);
             scene.getStylesheets().add(DomaineNcApp.class.getResource("css/StyleDomaineNc.css").toExternalForm());
             stage.setTitle(listContenu[1] + listContenu[4]);

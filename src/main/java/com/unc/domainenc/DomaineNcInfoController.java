@@ -2,92 +2,67 @@ package com.unc.domainenc;
 
 import com.unc.domainenc.api.DomaineInfoEntity;
 import com.unc.domainenc.api.Request;
-
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
-import java.util.Date;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.List;
+import java.util.Date;
+import java.util.ResourceBundle;
 
 
-
-public class DomaineNcInfoController {
+public class DomaineNcInfoController implements Initializable {
+    private final String nom;
     @FXML
     private VBox infoVbox;
 
-    public void initialize() {
-        String titre = "1012";
-        setInfo(titre);
+    public DomaineNcInfoController(String nom) {
+        this.nom = nom;
     }
 
-
-    public void setInfo(String titre){
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         Request request = new Request();
-        DomaineInfoEntity domaineInfoEntity = request.getDomaineInfo(titre);
-
-        TextField infoBeneficiaire = new TextField(domaineInfoEntity.getBeneficiaire());
-        infoBeneficiaire.setEditable(false);
-        infoVbox.getChildren().add(infoBeneficiaire);
-
-        TextField infoGestionnaire = new TextField(domaineInfoEntity.getGestionnaire());
-        infoGestionnaire.setEditable(false);
-        infoVbox.getChildren().add(infoGestionnaire);
-
-        String dateCreation = domaineInfoEntity.getDateCreation();
-        String dateExpiration = domaineInfoEntity.getDateExpiration();
-        setDate(dateCreation);
-        setDate(dateExpiration);
-
-        int joursRestant = domaineInfoEntity.getNbDaysBeforeExpires();
-        setExpiration(32);
-
-        List<String> listDns = domaineInfoEntity.getDns();
-        setListDns(listDns);
-
+        DomaineInfoEntity domaineInfoEntity = request.getDomaineInfo(nom);
+        addInfo("Bénéficiaire :\n"+domaineInfoEntity.getBeneficiaire());
+        addInfo("Gestionnaire :\n"+domaineInfoEntity.getGestionnaire());
+        addInfo("Date de création :\n"+setDate(domaineInfoEntity.getDateCreation()));
+        addInfo("Date d'expiration :\n"+setDate(domaineInfoEntity.getDateExpiration()));
+        addInfo("Temps avant expiration :\n"+setExpiration(domaineInfoEntity.getNbDaysBeforeExpires()));
+        addInfo("Serveur DNS :\n"+String.join(", ", domaineInfoEntity.getDns()));
     }
 
-    public void setDate(String stringDate){
+    public void addInfo(String contenu) {
+        Label info = new Label(contenu);
+        info.setPrefSize(300,50);
+        infoVbox.getChildren().add(info);
+    }
+
+    public String setDate(String stringDate) {
         try {
-            stringDate = stringDate.replace("-", " ");
-            SimpleDateFormat ymdFormat = new SimpleDateFormat("yyyy MM dd");
+            SimpleDateFormat ymdFormat = new SimpleDateFormat("yyyy-MM-dd");
             SimpleDateFormat dmyFormat = new SimpleDateFormat("dd MMMM yyyy");
             Date date = ymdFormat.parse(stringDate);
-            TextField infoDate = new TextField(dmyFormat.format(date));
-            infoDate.setEditable(false);
-            infoVbox.getChildren().add(infoDate);
+            return dmyFormat.format(date);
         } catch (ParseException dateException) {
             System.out.println("erreur parsing date");
         }
+        return "";
     }
 
-    public void setExpiration(int joursRestant){
-        int res;
-        if (joursRestant>365) {
-            res = joursRestant/365;
-        }else if(joursRestant <= 365 && joursRestant > 31){
-            res = joursRestant/31;
+    public String setExpiration(int joursRestant) {
+        String res;
+        if (joursRestant > 365) {
+            res = joursRestant / 365 + " années restantes";
+        } else if (joursRestant > 31) {
+            res = joursRestant / 31 + " mois restants";
+        } else {
+            res = joursRestant + " jours restants";
         }
-        else{
-            res = joursRestant;
-        }
-        TextField infoExpiration= new TextField(Integer.toString(res));
-        infoExpiration.setEditable(false);
-        infoVbox.getChildren().add(infoExpiration);  
-
+        return res;
     }
-
-    public void setListDns(List<String> listDns){
-        String string = "";
-        TextField infoDns= new TextField();
-        for (String dns : listDns) {
-            string = string+","+dns;
-        }
-        infoDns.setText(string);
-        infoDns.setEditable(false);
-        infoVbox.getChildren().add(infoDns);
-    }
-
 }
