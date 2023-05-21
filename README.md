@@ -30,15 +30,12 @@ cd domaine-nc-javafx
 ls -la .env
 mvn javafx:run
 ```
-Executer le jar
-
-```shell
-java -jar target/domainenc.jar
 ```
-# 💿 Packager
+# 💿 Packager & Exec ⚡
 
 ```shell
 mvn clean package
+java -jar target/domainenc.jar
 ```
 On générera ainsi le fichier domainenc.jar à utiliser .
 
