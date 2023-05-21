@@ -30,7 +30,7 @@ cd domaine-nc-javafx
 ls -la .env
 mvn javafx:run
 ```
-```
+
 # 💿 Packager & Exec ⚡
 
 ```shell
