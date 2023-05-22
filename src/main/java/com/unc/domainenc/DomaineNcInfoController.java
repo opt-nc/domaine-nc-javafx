@@ -2,10 +2,13 @@ package com.unc.domainenc;
 
 import com.unc.domainenc.api.DomaineInfoEntity;
 import com.unc.domainenc.api.Request;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
@@ -17,29 +20,35 @@ import java.util.ResourceBundle;
 
 public class DomaineNcInfoController implements Initializable {
     private final String nom;
+    private final Request request;
     @FXML
     private VBox infoVbox;
 
-    public DomaineNcInfoController(String nom) {
+    public DomaineNcInfoController(String nom, Request request) {
         this.nom = nom;
+        this.request = request;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Request request = new Request();
         DomaineInfoEntity domaineInfoEntity = request.getDomaineInfo(nom);
-        addInfo("Bénéficiaire :\n"+domaineInfoEntity.getBeneficiaire());
-        addInfo("Gestionnaire :\n"+domaineInfoEntity.getGestionnaire());
-        addInfo("Date de création :\n"+setDate(domaineInfoEntity.getDateCreation()));
-        addInfo("Date d'expiration :\n"+setDate(domaineInfoEntity.getDateExpiration()));
-        addInfo("Temps avant expiration :\n"+setExpiration(domaineInfoEntity.getNbDaysBeforeExpires()));
-        addInfo("Serveur DNS :\n"+String.join(", ", domaineInfoEntity.getDns()));
+        addInfo("Bénéficiaire :\n" + domaineInfoEntity.getBeneficiaire(), FontAwesomeIcon.CREDIT_CARD);
+        addInfo("Gestionnaire :\n" + domaineInfoEntity.getGestionnaire(), FontAwesomeIcon.USER);
+        addInfo("Date de création :\n" + setDate(domaineInfoEntity.getDateCreation()), FontAwesomeIcon.CHECK_CIRCLE_ALT);
+        addInfo("Date d'expiration :\n" + setDate(domaineInfoEntity.getDateExpiration()), FontAwesomeIcon.CALENDAR_TIMES_ALT);
+        addInfo("Temps avant expiration :\n" + setExpiration(domaineInfoEntity.getNbDaysBeforeExpires()), FontAwesomeIcon.HOURGLASS_END);
+        addInfo("Serveur DNS :\n" + String.join(", ", domaineInfoEntity.getDns()), FontAwesomeIcon.SERVER);
     }
 
-    public void addInfo(String contenu) {
+    public void addInfo(String contenu, FontAwesomeIcon iconType) {
+        FontAwesomeIconView icon = new FontAwesomeIconView(iconType);
+        icon.setSize("28px");
         Label info = new Label(contenu);
-        info.setPrefSize(300,50);
-        infoVbox.getChildren().add(info);
+        HBox container = new HBox(14);
+        container.setPadding(new Insets(14));
+        container.setPrefSize(300, 60);
+        container.getChildren().addAll(icon, info);
+        infoVbox.getChildren().add(container);
     }
 
     public String setDate(String stringDate) {

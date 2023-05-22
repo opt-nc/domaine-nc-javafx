@@ -29,10 +29,12 @@ public class DomaineNcController {
     @FXML
     private Button searchButton;
 
+    private Request request;
+
     private List<DomaineEntity> listDomaines;
 
     public void initialize() {
-        Request request = new Request();
+        request = new Request();
         listDomaines = request.getDomaine();
         searchBar.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
@@ -55,8 +57,7 @@ public class DomaineNcController {
                     throw new RuntimeException(e);
                 }
                 Platform.runLater(() -> {
-                    TextField textField = new TextField(
-                            String.format("Nom: %s , Extensions: %s", domaine.getName(), domaine.getExtension()));
+                    TextField textField = new TextField(String.format("Nom: %s , Extensions: %s", domaine.getName(), domaine.getExtension()));
                     textField.setEditable(false);
                     textField.setOnMouseClicked(this::onTextFieldClick);
                     vBoxDomaines.getChildren().add(textField);
@@ -76,12 +77,10 @@ public class DomaineNcController {
                 String[] listContenu = textField.getText().split(" ");
                 try {
                     Stage stage = new Stage();
-                    FXMLLoader fxmlLoader = new FXMLLoader(
-                            DomaineNcApp.class.getResource("InterfaceInfoDomaineNc.fxml"));
-                    fxmlLoader.setController(new DomaineNcInfoController(listContenu[1]));
+                    FXMLLoader fxmlLoader = new FXMLLoader(DomaineNcApp.class.getResource("InterfaceInfoDomaineNc.fxml"));
+                    fxmlLoader.setController(new DomaineNcInfoController(listContenu[1], request));
                     Scene scene = new Scene(fxmlLoader.load(), 420, 440);
-                    scene.getStylesheets()
-                            .add(DomaineNcApp.class.getResource("css/StyleDomaineNc.css").toExternalForm());
+                    scene.getStylesheets().add(DomaineNcApp.class.getResource("css/StyleDomaineNc.css").toExternalForm());
                     stage.setTitle(listContenu[1] + listContenu[4]);
                     stage.setScene(scene);
                     stage.show();
@@ -90,7 +89,6 @@ public class DomaineNcController {
                 }
             }
         }
-
     }
 
     protected List<DomaineEntity> searchList(String searchWords) {
