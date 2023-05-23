@@ -32,7 +32,7 @@ public class DomaineNcInfoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         DomaineInfoEntity domaineInfoEntity = request.getDomaineInfo(nom);
-        addInfo("Bénéficiaire :\n" + domaineInfoEntity.getBeneficiaire(), FontAwesomeIcon.CREDIT_CARD);
+        addInfo("Bénéficiaire :\n" + cleanRidet(domaineInfoEntity.getBeneficiaire()), FontAwesomeIcon.CREDIT_CARD);
         addInfo("Gestionnaire :\n" + domaineInfoEntity.getGestionnaire(), FontAwesomeIcon.USER);
         addInfo("Date de création :\n" + setDate(domaineInfoEntity.getDateCreation()), FontAwesomeIcon.CHECK_CIRCLE_ALT);
         addInfo("Date d'expiration :\n" + setDate(domaineInfoEntity.getDateExpiration()), FontAwesomeIcon.CALENDAR_TIMES_ALT);
@@ -73,5 +73,15 @@ public class DomaineNcInfoController implements Initializable {
             res = joursRestant + " jours restants";
         }
         return res;
+    }
+
+    public String cleanRidet(String beneficiaire) {
+        if (beneficiaire.startsWith("Ridet : ")) {
+            int index = beneficiaire.indexOf("-", "Ridet : ".length());
+            if (index != -1) {
+                beneficiaire = beneficiaire.substring(0, index);
+            }
+        }
+        return beneficiaire;
     }
 }
