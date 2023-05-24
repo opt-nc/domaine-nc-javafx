@@ -3,7 +3,6 @@ package com.unc.domainenc.api;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -17,15 +16,17 @@ public class Request {
     private static final String apiURL = "https://domaine-nc.p.rapidapi.com/domaines";
     private static final String apiHOST = "domaine-nc.p.rapidapi.com";
 
-    private final String apiKEY;
+    private static String apiKEY;
     private final RestTemplate restTemplate;
     private final ObjectMapper mapper;
 
     public Request() {
-        Dotenv dotenv = Dotenv.load();
-        apiKEY = dotenv.get("X-RAPIDAPI-KEY");
         restTemplate = new RestTemplate();
         mapper = new ObjectMapper();
+    }
+
+    public static void setApiKey(String apiKEY) {
+        Request.apiKEY = apiKEY;
     }
 
     public static void main(String[] args) {
