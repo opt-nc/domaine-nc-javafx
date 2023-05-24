@@ -46,8 +46,8 @@ public class DomaineNcInfoController implements Initializable {
         icon.getStyleClass().add("color");
         Label info = new Label(contenu);
         info.getStyleClass().add("color");
-        HBox container = new HBox(14);
-        container.setPadding(new Insets(14));
+        HBox container = new HBox(16);
+        container.setPadding(new Insets(8));
         container.setPrefSize(300, 60);
         container.getChildren().addAll(icon, info);
         infoVbox.getChildren().add(container);
