@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="420.0"
             minWidth="300.0"
-            prefHeight="420.0" prefWidth="600.0" styleClass="fond"
+            prefHeight="420.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.unc.domainenc.DomaineNcController">
     <HBox alignment="CENTER" layoutY="4.0" prefHeight="138.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0"
           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0">
@@ -15,8 +15,8 @@
     </HBox>
     <HBox alignment="CENTER" layoutY="140.0" prefHeight="280.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0"
           AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
-        <ScrollPane fitToHeight="true" prefHeight="280.0" prefWidth="356.0">
-            <VBox fx:id="vBoxDomaines" prefHeight="278.0" prefWidth="354.0" styleClass="fond"/>
+        <ScrollPane styleClass="themeScroll" fitToHeight="true" prefHeight="280.0" prefWidth="356.0">
+            <VBox fx:id="vBoxDomaines" styleClass="themeVbox" prefHeight="278.0" prefWidth="354.0" />
         </ScrollPane>
     </HBox>
 </AnchorPane>

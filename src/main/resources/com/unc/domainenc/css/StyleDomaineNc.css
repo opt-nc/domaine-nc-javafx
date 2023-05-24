@@ -1,0 +1,27 @@
+.pos1{
+    -fx-background-color: black;
+    -fx-text-fill: yellow;
+}
+
+.pos2{
+    -fx-background-color: yellow;
+    -fx-text-fill: black;
+}
+
+.root , .themeScroll , .themeVbox{
+    -fx-background-color: #2f2f2f;
+}
+
+.themeScroll , .themeVbox{
+    -fx-border-color: transparent;
+}
+
+.themeScroll{
+    -fx-hbar-policy: NEVER;
+    -fx-vbar-policy: NEVER; 
+}
+
+.color{
+    -fx-text-fill: yellow;
+    -fx-fill: yellow;
+}

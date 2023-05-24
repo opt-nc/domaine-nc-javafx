@@ -43,7 +43,9 @@ public class DomaineNcInfoController implements Initializable {
     public void addInfo(String contenu, FontAwesomeIcon iconType) {
         FontAwesomeIconView icon = new FontAwesomeIconView(iconType);
         icon.setSize("28px");
+        icon.getStyleClass().add("color");
         Label info = new Label(contenu);
+        info.getStyleClass().add("color");
         HBox container = new HBox(14);
         container.setPadding(new Insets(14));
         container.setPrefSize(300, 60);
