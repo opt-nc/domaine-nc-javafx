@@ -16,7 +16,7 @@ Application JavaFX pour consulter les données de DOMAINE.nc, développée en pr
 
 
 ```properties
-X-RAPIDAPI-KEY=Votre_clef_d'API
+X_RAPIDAPI_KEY=Votre_clef_d'API
 
 ```
 **⚠️ NB : Inutile d'aller plus loin tant que l'ensemble des prérequis ne sont pas satisfaits.⚠️**
