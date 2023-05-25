@@ -5,6 +5,7 @@ import com.unc.domainenc.api.Request;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -22,7 +23,10 @@ import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,6 +126,11 @@ public class DomaineNcController {
                 }
             }
         }
+    }
+
+    @FXML
+    public void openLink(ActionEvent event) throws URISyntaxException,IOException{
+        Desktop.getDesktop().browse(new URI("www.domaine.nc"));
     }
 
     protected List<DomaineEntity> searchList(String searchWords) {

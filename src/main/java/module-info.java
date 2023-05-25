@@ -4,6 +4,7 @@ module com.unc.domainenc {
     requires org.slf4j;
     requires ch.qos.logback.classic;
     requires ch.qos.logback.core;
+    requires java.desktop;
     requires io.github.cdimascio.dotenv.java;
     requires spring.web;
     requires com.fasterxml.jackson.core;
