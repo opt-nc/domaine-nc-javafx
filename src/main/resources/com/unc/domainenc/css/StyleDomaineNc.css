@@ -33,3 +33,8 @@
     -fx-font-size: 14px;
     -fx-font-weight: bold;
 }
+
+.lienDomaineNc{
+    -fx-text-fill: yellow;
+    -fx-border-color: transparent;
+}
