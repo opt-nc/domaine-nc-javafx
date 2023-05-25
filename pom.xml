@@ -14,9 +14,11 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <jfx.version>17.0.7-ea+1</jfx.version>
+        <logback.version>1.4.6</logback.version>
         <dotenv.version>2.3.2</dotenv.version>
         <springweb.version>6.0.6</springweb.version>
         <jackson.version>2.14.2</jackson.version>
+       <fontawesomeFx.version>4.7.0-9.1.2</fontawesomeFx.version>
         <junit.version>5.9.1</junit.version>
     </properties>
 
@@ -30,6 +32,11 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>${jfx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
         </dependency>
         <dependency>
             <groupId>io.github.cdimascio</groupId>
@@ -49,7 +56,7 @@
         <dependency>
             <groupId>de.jensd</groupId>
             <artifactId>fontawesomefx-fontawesome</artifactId>
-            <version>4.7.0-9.1.2</version>
+            <version>${fontawesomeFx.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

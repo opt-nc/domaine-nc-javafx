@@ -11,7 +11,7 @@
     -fx-vbar-policy: NEVER; 
 }
 
-.color{
+.color , .content.label {
     -fx-text-fill: yellow;
     -fx-fill: yellow;
 }

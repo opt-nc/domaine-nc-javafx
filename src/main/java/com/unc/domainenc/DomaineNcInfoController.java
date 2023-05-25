@@ -10,6 +10,8 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URL;
 import java.text.ParseException;
@@ -19,6 +21,7 @@ import java.util.ResourceBundle;
 
 
 public class DomaineNcInfoController implements Initializable {
+    private static final Logger logger = LoggerFactory.getLogger(DomaineNcInfoController.class);
     private final String nom;
     private final Request request;
     @FXML
@@ -31,6 +34,7 @@ public class DomaineNcInfoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        logger.info(String.format("Recuperation des information sur " + nom + ".nc."));
         DomaineInfoEntity domaineInfoEntity = request.getDomaineInfo(nom);
         addInfo("Bénéficiaire :\n" + cleanRidet(domaineInfoEntity.getBeneficiaire()), FontAwesomeIcon.CREDIT_CARD);
         addInfo("Gestionnaire :\n" + domaineInfoEntity.getGestionnaire(), FontAwesomeIcon.USER);

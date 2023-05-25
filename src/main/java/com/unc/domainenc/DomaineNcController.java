@@ -13,37 +13,41 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class DomaineNcController {
 
+    private static final Logger logger = LoggerFactory.getLogger(DomaineNcController.class);
     @FXML
     private VBox vBoxDomaines;
-
     @FXML
     private TextField searchBar;
-
     @FXML
     private Button searchButton;
-
     private Request request;
-
     private List<DomaineEntity> listDomaines;
 
     public void initialize() {
         request = new Request();
-        listDomaines = request.getDomaine();
+        logger.info("Recuperation des noms de domaines.");
+        try {
+            listDomaines = request.getDomaine();
+        } catch (Exception e) {
+            logger.error("Clef d'API invalide.");
+            DomaineNcApp.afficheError("Votre clef d'API est invalide");
+            System.exit(1);
+        }
         searchBar.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 onClick();
@@ -53,11 +57,13 @@ public class DomaineNcController {
 
     @FXML
     protected void onClick() {
+        String contenu = searchBar.getText();
+        logger.info("Recherche " + contenu + ".");
+        List<DomaineEntity> sortList = searchList(contenu);
         searchButton.setDisable(true);
         searchBar.setDisable(true);
         vBoxDomaines.getChildren().clear();
         Thread searchThread = new Thread(() -> {
-            List<DomaineEntity> sortList = searchList(searchBar.getText());
             final boolean[] altern = {true};
             for (DomaineEntity domaine : sortList) {
                 try {
@@ -105,9 +111,9 @@ public class DomaineNcController {
                     FXMLLoader fxmlLoader = new FXMLLoader(DomaineNcApp.class.getResource("InterfaceInfoDomaineNc.fxml"));
                     fxmlLoader.setController(new DomaineNcInfoController(listContenu[0], request));
                     Scene scene = new Scene(fxmlLoader.load(), 420, 440);
-                    scene.getStylesheets().add(Objects.requireNonNull(DomaineNcApp.class.getResource("css/StyleDomaineNc.css")).toExternalForm());
+                    scene.getStylesheets().add(DomaineNcApp.appStyle);
                     stage.setTitle(listContenu[0] + listContenu[2]);
-                    stage.getIcons().add(new Image(Objects.requireNonNull(DomaineNcApp.class.getResourceAsStream("img/Icon.png"))));
+                    stage.getIcons().add(DomaineNcApp.appIcon);
                     stage.setScene(scene);
                     stage.setResizable(false);
                     stage.show();
