@@ -4,7 +4,6 @@ import com.unc.domainenc.api.DomaineInfoEntity;
 import com.unc.domainenc.api.Request;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -92,13 +91,15 @@ public class DomaineNcInfoController implements Initializable {
         icon.getStyleClass().add("color");
         Label info = new Label(contenu);
         info.getStyleClass().add("color");
-        info.setOnMouseClicked(event -> {
-            try {
-                openRidetEntreprise(event);
-            } catch (URISyntaxException | IOException e) {
-                e.printStackTrace();
-            }
-        });
+        if (this.ridet.startsWith("Ridet :")) {
+            info.setOnMouseClicked(event -> {
+                try {
+                    openRidetEntreprise(event);
+                } catch (URISyntaxException | IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
         HBox container = new HBox(16);
         container.setPadding(new Insets(8));
         container.setPrefSize(300, 60);
