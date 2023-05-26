@@ -145,7 +145,8 @@ public class DomaineNcInfoController implements Initializable {
     }
 
     public void openRidetEntreprise(MouseEvent event) throws URISyntaxException,IOException{
-        Desktop.getDesktop().browse(new URI("https://data.gouv.nc/explore/dataset/entreprises-actives-au-ridet/table/?disjunctive.libelle_formjur&disjunctive.code_ape&disjunctive.libelle_naf&disjunctive.section_naf&disjunctive.libelle_section_naf&disjunctive.libelle_commune&disjunctive.hors_nc&disjunctive.province&q="+this.ridet));
+        String[] num = this.ridet.split(" ");
+        Desktop.getDesktop().browse(new URI("https://data.gouv.nc/explore/dataset/entreprises-actives-au-ridet/table/?disjunctive.libelle_formjur&disjunctive.code_ape&disjunctive.libelle_naf&disjunctive.section_naf&disjunctive.libelle_section_naf&disjunctive.libelle_commune&disjunctive.hors_nc&disjunctive.province&q="+num[2]));
     }
 
 }
