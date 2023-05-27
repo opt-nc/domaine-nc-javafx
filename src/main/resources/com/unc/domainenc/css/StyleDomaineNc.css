@@ -2,31 +2,34 @@
     -fx-background-color: #2f2f2f;
 }
 
-.themeScroll , .themeVbox{
+.window .title {
+    -fx-text-fill: blue;
+}
+
+.themeScroll , .themeVbox, .lienDomaineNc{
     -fx-border-color: transparent;
 }
 
 .themeScroll{
     -fx-hbar-policy: NEVER;
-    -fx-vbar-policy: NEVER; 
 }
 
-.color , .content.label {
+.scroll-bar:vertical .thumb{
+    -fx-background-color: gray;
+}
+
+.color , .content.label, .colorInv,.lienDomaineNc{
     -fx-text-fill: yellow;
     -fx-fill: yellow;
 }
 
-.colorInv{
-    -fx-text-fill: black;
-    -fx-fill: black;
-}
-
 .pos1{
-    -fx-background-color: black;
+    -fx-background-color: 
+    #5b625c;
 }
 
 .pos2{
-    -fx-background-color: yellow;
+    -fx-background-color: black;
 }
 
 .label {
@@ -34,7 +37,3 @@
     -fx-font-weight: bold;
 }
 
-.lienDomaineNc{
-    -fx-text-fill: yellow;
-    -fx-border-color: transparent;
-}
