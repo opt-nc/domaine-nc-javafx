@@ -15,7 +15,6 @@ import javafx.scene.layout.VBox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -111,30 +110,10 @@ public class DomaineNcInfoController implements Initializable {
         return beneficiaire;
     }
 
-    public void browse(String url) {
-        Runtime rt = Runtime.getRuntime();
-        try {
-            if (DomaineNcApp.os.contains("win")) {
-                rt.exec("rundll32 url.dll,FileProtocolHandler " + url);
-            } else if (DomaineNcApp.os.contains("mac")) {
-                rt.exec("open " + url);
-            } else if (DomaineNcApp.os.contains("nix") || DomaineNcApp.os.contains("nux") || DomaineNcApp.os.contains("bsd")) {
-                String[] browsers = {"epiphany", "firefox", "mozilla", "konqueror", "netscape", "opera", "links", "lynx"};
-                StringBuilder cmd = new StringBuilder();
-                for (int i = 0; i < browsers.length; i++) {
-                    cmd.append(i == 0 ? "" : " || ").append(browsers[i]).append(" \"").append(url).append("\" ");
-                }
-                rt.exec(new String[]{"sh", "-c", cmd.toString()});
-            }
-        } catch (IOException e) {
-            logger.error("Impossible d'ouvrir le Lien.");
-        }
-    }
-
     public void openDomaineNc(MouseEvent event) {
         if (event.getButton().equals(MouseButton.PRIMARY)) {
             if (event.getClickCount() == 2) {
-                browse("https://www.domaine.nc/whos?domain=" + this.nom + "&ext=.nc");
+                DomaineNcApp.browse("https://www.domaine.nc/whos?domain=" + this.nom + "&ext=.nc");
             }
         }
     }
@@ -143,7 +122,7 @@ public class DomaineNcInfoController implements Initializable {
         if (event.getButton().equals(MouseButton.PRIMARY)) {
             if (event.getClickCount() == 2) {
                 String[] num = this.ridet.split(" ");
-                browse("https://data.gouv.nc/explore/dataset/entreprises-actives-au-ridet/table/" +
+                DomaineNcApp.browse("https://data.gouv.nc/explore/dataset/entreprises-actives-au-ridet/table/" +
                         "?disjunctive.libelle_formjur&disjunctive.code_ape&disjunctive.libelle_naf&disjunctive.section_naf" +
                         "&disjunctive.libelle_section_naf&disjunctive.libelle_commune&disjunctive.hors_nc&disjunctive.province&q=" + num[2]);
             }

@@ -7,6 +7,7 @@ import com.unc.domainenc.api.Request;
 import io.github.cdimascio.dotenv.Dotenv;
 import io.github.cdimascio.dotenv.DotenvException;
 import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -26,6 +27,7 @@ public class DomaineNcApp extends Application {
     public static Image appIcon = new Image(Objects.requireNonNull(DomaineNcApp.class.getResourceAsStream("img/Icon.png")));
     public static String appStyle = Objects.requireNonNull(DomaineNcApp.class.getResource("css/StyleDomaineNc.css")).toExternalForm();
     private final String apiKEYname = "X_RAPIDAPI_KEY";
+    private static HostServices webServices;
 
     public static void main(String[] args) {
         LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
@@ -51,6 +53,12 @@ public class DomaineNcApp extends Application {
         dialogPane.getStylesheets().add(DomaineNcApp.appStyle);
         dialogPane.getStyleClass().add("color");
         alert.showAndWait();
+    }
+
+    public static void browse(String url) {
+        if (webServices != null) {
+            webServices.showDocument(url);
+        }
     }
 
     @Override
@@ -96,5 +104,6 @@ public class DomaineNcApp extends Application {
         stage.getIcons().add(DomaineNcApp.appIcon);
         stage.setScene(scene);
         stage.show();
+        webServices = getHostServices();
     }
 }
