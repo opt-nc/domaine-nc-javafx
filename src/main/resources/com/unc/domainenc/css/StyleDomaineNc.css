@@ -2,10 +2,6 @@
     -fx-background-color: #2f2f2f;
 }
 
-.window .title {
-    -fx-text-fill: blue;
-}
-
 .themeScroll , .themeVbox, .lienDomaineNc{
     -fx-border-color: transparent;
 }
@@ -24,8 +20,7 @@
 }
 
 .pos1{
-    -fx-background-color: 
-    #5b625c;
+    -fx-background-color: #5b625c;
 }
 
 .pos2{
