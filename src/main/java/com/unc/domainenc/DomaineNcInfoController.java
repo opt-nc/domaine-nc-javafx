@@ -15,10 +15,6 @@ import javafx.scene.layout.VBox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.awt.*;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -117,11 +113,7 @@ public class DomaineNcInfoController implements Initializable {
     public void openDomaineNc(MouseEvent event) {
         if (event.getButton().equals(MouseButton.PRIMARY)) {
             if (event.getClickCount() == 2) {
-                try {
-                    Desktop.getDesktop().browse(new URI("https://www.domaine.nc/whos?domain=" + this.nom + "&ext=.nc"));
-                } catch (IOException | URISyntaxException e) {
-                    logger.error("Impossible d'ouvrir le Lien.");
-                }
+                DomaineNcApp.browse("https://www.domaine.nc/whos?domain=" + this.nom + "&ext=.nc");
             }
         }
     }
@@ -130,11 +122,9 @@ public class DomaineNcInfoController implements Initializable {
         if (event.getButton().equals(MouseButton.PRIMARY)) {
             if (event.getClickCount() == 2) {
                 String[] num = this.ridet.split(" ");
-                try {
-                    Desktop.getDesktop().browse(new URI("https://data.gouv.nc/explore/dataset/entreprises-actives-au-ridet/table/?disjunctive.libelle_formjur&disjunctive.code_ape&disjunctive.libelle_naf&disjunctive.section_naf&disjunctive.libelle_section_naf&disjunctive.libelle_commune&disjunctive.hors_nc&disjunctive.province&q=" + num[2]));
-                } catch (IOException | URISyntaxException e) {
-                    logger.error("Impossible d'ouvrir le Lien.");
-                }
+                DomaineNcApp.browse("https://data.gouv.nc/explore/dataset/entreprises-actives-au-ridet/table/" +
+                        "?disjunctive.libelle_formjur&disjunctive.code_ape&disjunctive.libelle_naf&disjunctive.section_naf" +
+                        "&disjunctive.libelle_section_naf&disjunctive.libelle_commune&disjunctive.hors_nc&disjunctive.province&q=" + num[2]);
             }
         }
     }
