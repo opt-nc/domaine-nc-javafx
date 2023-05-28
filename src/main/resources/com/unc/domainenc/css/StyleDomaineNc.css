@@ -14,7 +14,7 @@
     -fx-background-color: gray;
 }
 
-.color , .content.label, .colorInv,.lienDomaineNc{
+.color , .content.label,.lienDomaineNc{
     -fx-text-fill: yellow;
     -fx-fill: yellow;
 }

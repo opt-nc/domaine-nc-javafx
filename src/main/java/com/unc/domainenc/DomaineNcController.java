@@ -77,17 +77,15 @@ public class DomaineNcController {
                     label.setOnMouseClicked(this::onLabelClick);
                     FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.GLOBE);
                     icon.setSize("40px");
+                    label.getStyleClass().add("color");
+                    icon.getStyleClass().add("color");
                     HBox container = new HBox(20);
                     container.setPadding(new Insets(4));
                     altern[0] = !altern[0];
                     if (altern[0]) {
                         container.getStyleClass().add("pos1");
-                        label.getStyleClass().add("color");
-                        icon.getStyleClass().add("color");
                     } else {
                         container.getStyleClass().add("pos2");
-                        label.getStyleClass().add("colorInv");
-                        icon.getStyleClass().add("colorInv");
                     }
                     container.setAlignment(Pos.CENTER_LEFT);
                     container.getChildren().addAll(icon, label);
