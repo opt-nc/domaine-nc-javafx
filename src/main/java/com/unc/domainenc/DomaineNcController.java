@@ -127,14 +127,7 @@ public class DomaineNcController {
     protected List<DomaineEntity> searchList(String searchWords) {
         List<DomaineEntity> res = new ArrayList<>();
         for (DomaineEntity domaine : listDomaines) {
-            boolean check = true;
-            for (int i = 0; i < searchWords.length(); i++) {
-                if (domaine.getName().charAt(i) != searchWords.charAt(i)) {
-                    check = false;
-                    break;
-                }
-            }
-            if (check) {
+            if (domaine.getName().startsWith(searchWords)) {
                 res.add(domaine);
             }
         }
