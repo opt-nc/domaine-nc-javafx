@@ -18,8 +18,7 @@
         <dotenv.version>2.3.2</dotenv.version>
         <springweb.version>6.0.6</springweb.version>
         <jackson.version>2.14.2</jackson.version>
-       <fontawesomeFx.version>4.7.0-9.1.2</fontawesomeFx.version>
-        <junit.version>5.9.1</junit.version>
+        <fontawesomeFx.version>4.7.0-9.1.2</fontawesomeFx.version>
     </properties>
 
     <dependencies>
@@ -32,6 +31,24 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>${jfx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>${jfx.version}</version>
+            <classifier>win</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>${jfx.version}</version>
+            <classifier>linux</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>${jfx.version}</version>
+            <classifier>mac</classifier>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -57,18 +74,6 @@
             <groupId>de.jensd</groupId>
             <artifactId>fontawesomefx-fontawesome</artifactId>
             <version>${fontawesomeFx.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -115,12 +120,10 @@
                                 <filter>
                                     <artifact>*:*</artifact>
                                     <excludes>
-                                        <exclude>META-INF/*</exclude>
-                                        <exclude>META-INF/MANIFEST.MF</exclude>
-                                        <exclude>WEB-INF/web.xml</exclude>
-                                        <exclude>META-INF/context.xml</exclude>
-                                        <exclude>**/LICENSE*</exclude>
-                                        <exclude>**/README*</exclude>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                        <exclude>module-info.class</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
