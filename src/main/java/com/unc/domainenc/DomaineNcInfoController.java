@@ -44,7 +44,7 @@ public class DomaineNcInfoController implements Initializable {
         logger.info(String.format("Recuperation des information sur " + nom + ".nc."));
         DomaineInfoEntity domaineInfoEntity = request.getDomaineInfo(nom);
         this.ridet = cleanRidet(domaineInfoEntity.getBeneficiaire());
-        infoVbox.getChildren().add(addInfoLien("Ouvrir sur Domaine.nc", FontAwesomeIcon.GLOBE));
+        infoVbox.getChildren().add(addInfoLien(this.nom+".nc", FontAwesomeIcon.CHROME));
         infoVbox.getChildren().add(addInfoLienRidet("Bénéficiaire :\n" + ridet, FontAwesomeIcon.CREDIT_CARD));
         infoVbox.getChildren().add(addInfo("Gestionnaire :\n" + domaineInfoEntity.getGestionnaire(), FontAwesomeIcon.USER));
         infoVbox.getChildren().add(addInfo("Date de création :\n" + setDate(domaineInfoEntity.getDateCreation()), FontAwesomeIcon.CHECK_CIRCLE_ALT));
