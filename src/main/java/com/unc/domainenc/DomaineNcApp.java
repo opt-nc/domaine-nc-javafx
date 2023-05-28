@@ -58,6 +58,9 @@ public class DomaineNcApp extends Application {
     public static void browse(String url) {
         if (webServices != null) {
             webServices.showDocument(url);
+            logger.info("Ouverture de " + url);
+        } else {
+            logger.warn("Impossible d'acceder à " + url);
         }
     }
 
