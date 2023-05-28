@@ -27,8 +27,22 @@
     -fx-background-color: black;
 }
 
-.label {
+.label , .list-view .list-cell {
     -fx-font-size: 14px;
     -fx-font-weight: bold;
 }
 
+.list-view {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.list-view .list-cell{
+    -fx-background-color: #2f2f2f;
+    -fx-text-fill: yellow;
+    -fx-padding: 1px;
+}
+
+.list-view .scroll-bar{
+    -fx-background-color: #2f2f2f;
+}
