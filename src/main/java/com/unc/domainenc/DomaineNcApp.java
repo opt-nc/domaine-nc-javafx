@@ -26,8 +26,8 @@ public class DomaineNcApp extends Application {
     private static final Logger logger = LoggerFactory.getLogger(DomaineNcApp.class);
     public static Image appIcon = new Image(Objects.requireNonNull(DomaineNcApp.class.getResourceAsStream("img/Icon.png")));
     public static String appStyle = Objects.requireNonNull(DomaineNcApp.class.getResource("css/StyleDomaineNc.css")).toExternalForm();
-    private final String apiKEYname = "X_RAPIDAPI_KEY";
     private static HostServices webServices;
+    private final String apiKEYname = "X_RAPIDAPI_KEY";
 
     public static void main(String[] args) {
         LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
