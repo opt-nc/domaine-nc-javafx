@@ -29,21 +29,14 @@ public class Request {
         Request.apiKEY = apiKEY;
     }
 
-    public static void main(String[] args) {
-        Request request = new Request();
-        List<DomaineEntity> domaineList = request.getDomaine();
-        DomaineInfoEntity domaineInfo = request.getDomaineInfo("1012");
-    }
-
     public List<DomaineEntity> getDomaine() {
         HttpHeaders headers = new HttpHeaders();
         headers.set("X-RapidAPI-Host", apiHOST);
         headers.set("X-RapidAPI-Key", apiKEY);
         ResponseEntity<String> response = restTemplate.exchange(apiURL, HttpMethod.GET, new HttpEntity<>(headers), String.class);
         try {
-            List<DomaineEntity> domaineList = mapper.readValue(response.getBody(), new TypeReference<List<DomaineEntity>>() {
+            return mapper.readValue(response.getBody(), new TypeReference<List<DomaineEntity>>() {
             });
-            return domaineList;
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
@@ -56,8 +49,7 @@ public class Request {
         headers.set("X-RapidAPI-Key", apiKEY);
         ResponseEntity<String> response = restTemplate.exchange(String.format("%s/%s/NC", apiURL, domaineName), HttpMethod.GET, new HttpEntity<>(headers), String.class);
         try {
-            DomaineInfoEntity domaineInfo = mapper.readValue(response.getBody(), DomaineInfoEntity.class);
-            return domaineInfo;
+            return mapper.readValue(response.getBody(), DomaineInfoEntity.class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
