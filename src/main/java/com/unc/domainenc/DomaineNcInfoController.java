@@ -4,10 +4,13 @@ import com.unc.domainenc.api.DomaineInfoEntity;
 import com.unc.domainenc.api.Request;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -19,6 +22,7 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -46,7 +50,7 @@ public class DomaineNcInfoController implements Initializable {
         infoVbox.getChildren().add(addInfo("Date de création :\n" + setDate(domaineInfoEntity.getDateCreation()), FontAwesomeIcon.CHECK_CIRCLE_ALT));
         infoVbox.getChildren().add(addInfo("Date d'expiration :\n" + setDate(domaineInfoEntity.getDateExpiration()), FontAwesomeIcon.CALENDAR_TIMES_ALT));
         infoVbox.getChildren().add(addInfo("Temps avant expiration :\n" + setExpiration(domaineInfoEntity.getNbDaysBeforeExpires()), FontAwesomeIcon.HOURGLASS_END));
-        infoVbox.getChildren().add(addInfo("Serveur DNS :\n" + String.join(", ", domaineInfoEntity.getDns()), FontAwesomeIcon.SERVER));
+        infoVbox.getChildren().add(addDns(domaineInfoEntity.getDns(), FontAwesomeIcon.SERVER));
     }
 
     public HBox addInfo(String contenu, FontAwesomeIcon iconType) {
@@ -73,6 +77,23 @@ public class DomaineNcInfoController implements Initializable {
         if (this.ridet.startsWith("Ridet :")) {
             container.lookup(".label").setOnMouseClicked(this::openRidetEntreprise);
         }
+        return container;
+    }
+
+    public HBox addDns(List<String> dnsList, FontAwesomeIcon iconType) {
+        ObservableList<String> data = FXCollections.observableArrayList(dnsList);
+        FontAwesomeIconView icon = new FontAwesomeIconView(iconType);
+        icon.setSize("28px");
+        icon.getStyleClass().add("color");
+        ListView<String> listView = new ListView<>(data);
+        Label info = new Label("Serveur DNS :");
+        info.getStyleClass().add("color");
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(info, listView);
+        HBox container = new HBox(16);
+        container.setPadding(new Insets(8));
+        container.setPrefSize(300, 80);
+        container.getChildren().addAll(icon, vbox);
         return container;
     }
 
