@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -74,7 +75,6 @@ public class DomaineNcController {
                 Platform.runLater(() -> {
                     Label label = new Label(String.format("%s \nExtensions: %s", domaine.getName(), domaine.getExtension()));
                     label.setMinSize(260, 50);
-                    label.setOnMouseClicked(this::onLabelClick);
                     FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.GLOBE);
                     icon.setSize("40px");
                     label.getStyleClass().add("color");
@@ -88,6 +88,9 @@ public class DomaineNcController {
                         container.getStyleClass().add("pos2");
                     }
                     container.setAlignment(Pos.CENTER_LEFT);
+                    container.setOnMouseClicked(this::onDomainesClick);
+                    container.setOnMouseEntered(e -> container.setCursor(Cursor.HAND));
+                    container.setOnMouseExited(e -> container.setCursor(Cursor.DEFAULT));
                     container.getChildren().addAll(icon, label);
                     vBoxDomaines.getChildren().add(container);
                 });
@@ -99,10 +102,11 @@ public class DomaineNcController {
         searchThread.start();
     }
 
-    public void onLabelClick(MouseEvent event) {
+    public void onDomainesClick(MouseEvent event) {
         if (event.getButton().equals(MouseButton.PRIMARY)) {
             if (event.getClickCount() == 2) {
-                Label label = (Label) event.getSource();
+                HBox container = (HBox) event.getSource();
+                Label label = (Label) container.getChildren().get(1);
                 String[] listContenu = label.getText().split(" ");
                 try {
                     Stage stage = new Stage();
