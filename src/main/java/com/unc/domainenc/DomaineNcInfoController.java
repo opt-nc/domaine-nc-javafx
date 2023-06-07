@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseButton;
@@ -70,14 +71,18 @@ public class DomaineNcInfoController implements Initializable {
 
     public HBox addInfoLien(String contenu, FontAwesomeIcon iconType) {
         HBox container = addInfo(contenu, iconType);
-        container.lookup(".label").setOnMouseClicked(this::openDomaineNc);
+        container.setOnMouseClicked(this::openDomaineNc);
+        container.setOnMouseEntered(e -> container.setCursor(Cursor.HAND));
+        container.setOnMouseExited(e -> container.setCursor(Cursor.DEFAULT));
         return container;
     }
 
     public HBox addInfoLienRidet(String contenu, FontAwesomeIcon iconType) {
         HBox container = addInfo(contenu, iconType);
         if (this.ridet.startsWith("Ridet :")) {
-            container.lookup(".label").setOnMouseClicked(this::openRidetEntreprise);
+            container.setOnMouseClicked(this::openRidetEntreprise);
+            container.setOnMouseEntered(e -> container.setCursor(Cursor.HAND));
+            container.setOnMouseExited(e -> container.setCursor(Cursor.DEFAULT));
         }
         return container;
     }
