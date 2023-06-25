@@ -25,7 +25,7 @@ X_RAPIDAPI_KEY=Votre_clef_d'API
 # 🕹️ Utiliser
 
 ```shell
-gh repo clone adriens/domaine-nc-javafx
+gh repo clone opt-nc/domaine-nc-javafx
 cd domaine-nc-javafx
 ls -la .env
 mvn javafx:run
