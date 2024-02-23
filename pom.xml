@@ -16,7 +16,7 @@
         <jfx.version>17.0.7-ea+1</jfx.version>
         <logback.version>1.4.6</logback.version>
         <dotenv.version>2.3.2</dotenv.version>
-        <springweb.version>6.0.6</springweb.version>
+        <springweb.version>6.0.17</springweb.version>
         <jackson.version>2.14.2</jackson.version>
         <fontawesomeFx.version>4.7.0-9.1.2</fontawesomeFx.version>
     </properties>
